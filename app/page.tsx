@@ -34,11 +34,8 @@ const REASON_LABELS: Record<string, string> = {
 
 // ── API helper ────────────────────────────────────────────────────────────────
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "https://web-production-6a8df.up.railway.app";
-
 async function api<T>(method: string, path: string, body?: unknown): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(path, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
